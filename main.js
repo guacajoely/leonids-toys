@@ -84,33 +84,34 @@ findToy(1)
 const toysWithoutPrices = [
 
     {
-        id: 1,
-        name: "Playstation 5",
+        'id': 1,
+        'name': "Playstation 5",
         manufacturer: "Sony",
     },
     
     {
-        id: 2,
-        name: "Xbox Series X",
+        'id': 2,
+        'name': "Xbox Series X",
         manufacturer: "Microsoft",
     },
     
     {
-        id: 3,
-        name: "Switch",
+        'id': 3,
+        'name': "Switch",
         manufacturer: "Nintendo",
     },
     {
-        id: 4,
-        name: "Genesis",
+        'id': 4,
+        'name': "Genesis",
         manufacturer: "Sega",
     },
     {
-        id: 5,
-        name: "Gamecube",
+        'id': 5,
+        'name': "Gamecube",
         manufacturer: "Nintendo",
     }
     ]
+
 
 
 // Map of each toy and their price
@@ -139,6 +140,7 @@ for (let pair of prices) {
   }
 
 
+
 //create a function that will add a new toy and price to the "prices" Map
 
 const addToyToInventory = (name, price) => {
@@ -147,13 +149,104 @@ const addToyToInventory = (name, price) => {
 
 }
 
-// Add the first toy in the toysWithoutPrices array to the Map and set its price
+// Add a toy from the toysWithoutPrices array to the Map and set its price
 addToyToInventory(toysWithoutPrices[0].name, 100)
 
 console.log(prices)
+
+
+// Map of each toy with each toy OBJECT as the key and their price as the VALUE
+const objectPrices = new Map()
+objectPrices.set(JSON.stringify(toysWithoutPrices[0]), 500)
+objectPrices.set(JSON.stringify(toysWithoutPrices[1]), 500)
+objectPrices.set(JSON.stringify(toysWithoutPrices[2]), 300)
+
+console.log(objectPrices)
+
+
+// create function that updates the price of an item in the objectPrices MAP 
+
+const repriceItemFromArray = function (object, newPrice){
+
+    objectPrices.set(JSON.stringify(object), newPrice)
+
+}
+
+repriceItemFromArray(toysWithoutPrices[0], 200)
+console.log(objectPrices)
+
+
+
+// create new Map of a different value from the toysWithoutPrices array
+// we'll use the id and name of each item in this example
+
+
+const createNewMap = function (array){
+
+    const newMap = new Map()
+
+    for (let i=0; i<array.length; i++) {
+
+        const newKey = array[i].id
+        const newValue = array[i].name
+
+        newMap.set(newKey, newValue)
+
+    }
+
+    return newMap
+}
+
+newMapOfNames = createNewMap(toysWithoutPrices, 'id', 'name')
+
+console.log(newMapOfNames)
+
+
+
 
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //SETS with LEONID'S TOYS 
 
+//replace array with a SET of toys so there are no duplicates
+
+const newPlaystation = {
+    'id': 1,
+    'name': "Playstation 5",
+    manufacturer: "Sony",
+}
+
+const newXbox = {
+    'id': 2,
+    'name': "Xbox Series X",
+    manufacturer: "Microsoft",
+}
+
+const newSwitch = {
+    'id': 2,
+    'name': "Xbox Series X",
+    manufacturer: "Microsoft",
+}
+
+const newGenesis = {
+    id: 4,
+    name: "Genesis",
+    manufacturer: "Sega",
+}
+
+const newGamecube = {
+    id: 5,
+    name: "Gamecube",
+    manufacturer: "Nintendo",
+}
+
+const setOfToys = new Set()
+
+setOfToys.add( newPlaystation )
+setOfToys.add( newXbox )
+setOfToys.add( newSwitch )
+setOfToys.add( newGenesis )
+setOfToys.add( newGamecube )
+
+console.log(setOfToys)  
